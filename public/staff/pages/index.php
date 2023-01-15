@@ -19,7 +19,7 @@
         <h1>Pages</h1>
 
         <div class="actions">
-            <a href="" class="action">Add New Page</a>
+            <a href="<?php echo url_for('/staff/pages/new.php')?>" class="action">Add New Page</a>
         </div>
 
         <!-- Listing Pages -->
@@ -35,11 +35,11 @@
 
             <?php foreach ($pages as $page){?>
                 <tr>
-                    <td><?php echo h_enc($page['id']); ?></td>
+                    <td><?php echo h_enc(u_enc($page['id'])); ?></td>
                     <td><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
-                    <td><?php echo h_enc($page['page_name']); ?></td>
-                    <td><a class="action" href="<?php echo url_for('/staff/pages/show.php?id=' . $page['id']); ?>">View</a></td>
-                    <td><a class="action" href="">Edit</a></td>
+                    <td><?php echo h_enc(u_enc($page['page_name'])); ?></td>
+                    <td><a class="action" href="<?php echo url_for('/staff/pages/show.php?id=' . h_enc(u_enc($page['id']))); ?>">View</a></td>
+                    <td><a class="action" href="<?php echo url_for('/staff/pages/edit.php?id=' . h_enc(u_enc($page['id']))); ?>">Edit</a></td>
                     <td><a class="action" href="">Delete</a></td>
                 </tr>
             <?php }?>
